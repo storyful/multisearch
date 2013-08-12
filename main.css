@@ -1,0 +1,51 @@
+html, body
+{
+	font-family: Helvetica, Sans-serif;
+	font-size: 12px;
+	height: 200px;
+	margin: 0;
+	min-width: 220px;
+	padding: 5px;
+}
+
+h1, h2
+{
+	margin: 0;
+	padding: 0;
+}
+
+h1
+{
+	font-size: 18px;
+}
+
+h2
+{
+	font-size: 14px;
+}
+
+ul
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#keyword
+{
+	display: block;
+	width: 100%
+}
+
+input[type='submit']
+{
+	display: block;
+	width: 100%;
+}
+
+.error
+{
+	color: #c33;
+	visibility: hidden;
+	padding-bottom: 10px;
+}

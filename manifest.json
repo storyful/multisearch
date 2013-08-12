@@ -1,0 +1,14 @@
+{
+  "icons": { 
+    "16": "multisearch_16.png",
+    "48": "multisearch_48.png",
+    "128": "multisearch_128.png" },
+  "browser_action": {
+    "default_icon": "multisearch_19.png",
+    "default_title": "Storyful MultiSearch",
+    "default_popup": "popup.html"},
+  "name": "Storyful MultiSearch",
+  "version": "0.5.1",
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' https://cdn.mxpnl.com https://ssl.google-analytics.com; object-src 'self'"
+}
