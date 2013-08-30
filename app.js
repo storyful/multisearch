@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+	mixpanel.track("MultiSearch shown");
+
 	$('#keyword').val(localStorage['keyword']);
 
 	// Remember checkbox choices between sessions

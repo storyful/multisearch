@@ -6,8 +6,8 @@ efficiently.
 ## Note
 
 The Storyful maintained version of this extension in the Google Store records usage via Google Analytics
-and Mixpanel. We only record that a search happened and not the search term or which search services were
-selected.
+and Mixpanel. We only record that the extension was opened and when a search is requested, not the search 
+term or which search services were selected.
 
 ## Installation
 
