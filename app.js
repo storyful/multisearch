@@ -23,14 +23,6 @@ $(document).ready(function() {
 
 	// Store checkbox choice
 	$("input[type='checkbox']").change(function(e) {
-		$('.error.length').css('visibility', 'hidden');
-
-		// Chrome extensions are only allowed to open 3 new tabs at once
-		if ($("input[type='checkbox']:checked").length > 3) {
-			$("input[type='checkbox']:checked").not(this).last().removeAttr('checked');
-			$('.error.length').css('visibility', 'visible');
-		}
-
 		$.each($("input[type='checkbox']"), function(index, ele) {
 			if ($(ele).is(':checked'))	{
 				localStorage[$(ele).attr('id')] = 'true';
@@ -54,9 +46,21 @@ $(document).ready(function() {
 			$('#keyword').focus();        	
     } else {
     	mixpanel.track("MultiSearch requested"); //#NOTE: Only tracks that a search happened, not what the search was for.
+    	
+    	// To open more than 3 tabs at once in Chrome requires trickery.
+    	var code_block = '';
 			$.each($("input[type='checkbox']:checked"), function(index, ele) {
 				var search_url = $(ele).attr('data-search-url').replace('{{k}}', k);
-  			chrome.tabs.create({'url': search_url}, function(tab) {});
+				if (index == 0) {
+					code_block = "document.location = '" + search_url + "'; ";
+				} else {
+					code_block = code_block + "window.open('" + search_url + "');";
+				}
+    	});
+
+			// Cannot executeScript in chrome:// tabs so must open real URL.
+    	chrome.tabs.create({url: 'http://storyful.com?utm=multisearch'}, function(tab) {
+	    	chrome.tabs.executeScript(tab.id, {runAt: 'document_start', code:code_block});
 	    });
 		}
 	});

@@ -26,11 +26,9 @@ We welcome your improvements. Fork the repo on Github and send a pull request wi
 
 ## Features & Issues
 
-1. Chrome extensions may only open (chrome.tabs.create) 3 tabs at a time. If you know how to get around 
-this then we would welcome the improvement. We have attempted a timer method but Chrome did not like this.
-2. You can add new websites to search just by copying one of the existing checkbox inputs and
+1. You can add new websites to search just by copying one of the existing checkbox inputs and
 modifying the data-search-url attribute.
-3. A Firefox or Safari version of this extension would be useful.
+2. A Firefox or Safari version of this extension would be useful.
 
 ## Contact
 
