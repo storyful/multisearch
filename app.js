@@ -50,7 +50,7 @@ $(document).ready(function() {
     	// To open more than 3 tabs at once in Chrome requires trickery.
     	var code_block = '';
 			$.each($("input[type='checkbox']:checked"), function(index, ele) {
-				var search_url = $(ele).attr('data-search-url').replace('{{k}}', k);
+				var search_url = $(ele).attr('data-search-url').replace('{{k}}', encodeURIComponent(k));
 				if (index == 0) {
 					code_block = "document.location = '" + search_url + "'; ";
 				} else {
