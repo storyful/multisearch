@@ -59,7 +59,7 @@ $(document).ready(function() {
     	});
 
 			// Cannot executeScript in chrome:// tabs so must open real URL.
-    	chrome.tabs.create({url: 'http://storyful.com?utm=multisearch'}, function(tab) {
+    	chrome.tabs.create({url: 'http://storyful.com?utm=multisearch', active: false}, function(tab) {
 	    	chrome.tabs.executeScript(tab.id, {runAt: 'document_start', code:code_block});
 	    });
 		}
