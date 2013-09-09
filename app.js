@@ -52,15 +52,16 @@ $(document).ready(function() {
 			$.each($("input[type='checkbox']:checked"), function(index, ele) {
 				var search_url = $(ele).attr('data-search-url').replace('{{k}}', encodeURIComponent(k));
 				if (index == 0) {
-					code_block = "document.location = '" + search_url + "'; ";
+					code_block = 'document.location = "' + search_url + '"; ';
 				} else {
-					code_block = code_block + "window.open('" + search_url + "');";
+					code_block = code_block + 'window.open("' + search_url + '");';
 				}
     	});
 
 			// Cannot executeScript in chrome:// tabs so must open real URL.
     	chrome.tabs.create({url: 'http://storyful.com?utm=multisearch', active: false}, function(tab) {
 	    	chrome.tabs.executeScript(tab.id, {runAt: 'document_start', code:code_block});
+
 	    });
 		}
 	});
