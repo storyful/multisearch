@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	mixpanel.track("MultiSearch shown");
-
+		
 	$('#keyword').val(localStorage['keyword']);
 
 	// Remember checkbox choices between sessions
@@ -50,7 +50,12 @@ $(document).ready(function() {
     	// To open more than 3 tabs at once in Chrome requires trickery.
     	var code_block = '';
 			$.each($("input[type='checkbox']:checked"), function(index, ele) {
-				var search_url = $(ele).attr('data-search-url').replace('{{k}}', encodeURIComponent(k));
+				var query = k;
+				if ($(ele).attr('data-search-modifier') != 'undefined') {
+					var modifier = new RegExp($(ele).attr('data-search-modifier'), 'g');
+					query = k.replace(modifier, '');
+				}
+				var search_url = $(ele).attr('data-search-url').replace('{{k}}', encodeURIComponent(query));
 				if (index == 0) {
 					code_block = 'document.location = "' + search_url + '"; ';
 				} else {
@@ -60,8 +65,7 @@ $(document).ready(function() {
 
 			// Cannot executeScript in chrome:// tabs so must open real URL.
     	chrome.tabs.create({url: 'http://storyful.com?utm=multisearch', active: false}, function(tab) {
-	    	chrome.tabs.executeScript(tab.id, {runAt: 'document_start', code:code_block});
-
+    		chrome.tabs.executeScript(tab.id, {runAt: 'document_start', code: code_block});
 	    });
 		}
 	});
