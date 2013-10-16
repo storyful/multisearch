@@ -1,4 +1,4 @@
-## Storyful MultiSearch
+## Storyful Multisearch
 
 A Google Chrome browser extension to help you search multiple social networks quickly and
 efficiently.
@@ -29,6 +29,8 @@ We welcome your improvements. Fork the repo on Github and send a pull request wi
 1. You can add new websites to search just by copying one of the existing checkbox inputs and
 modifying the data-search-url attribute.
 2. A Firefox or Safari version of this extension would be useful.
+3. The data-search-modifier lets you use regex to strip out chars e.g. when converting a search phrase
+to a tag for Instagram and Tumblr. "america's cup" becomes "americascup".
 
 ## Contact
 
@@ -36,4 +38,4 @@ Contact Paul Watson <paul.watson@storyful.com> (CTO @Storyful) with any question
 
 ## License
 
-Storyful MultiSearch is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+Storyful Multisearch is released under the [MIT License](http://www.opensource.org/licenses/MIT).
