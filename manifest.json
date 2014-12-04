@@ -34,11 +34,11 @@
   "content_security_policy": "script-src 'self' https://cdn.heapanalytics.com 'unsafe-eval'; script-src 'self' 'unsafe-eval'; object-src 'self';",
   "permissions": [
     "tabs", 
+    "https://cdn.heapanalytics.com/",
     "http://*/*/",
     "https://*/*/"
   ],
   "web_accessible_resources": [
-    "src/browser_action/browser_action.html",
-    "src/content_scripts/overlay_app.html"
+    "src/*"
   ]
 }

@@ -40,6 +40,7 @@ $(document).ready(function() {
       // mixpanel.track("MultiSearch requested");
       // #NOTE: Only tracks that a search happened, not what the search was for.
       $.each($("input[type='checkbox']:checked"), function(index, el) {
+        heap.track('Search ' + $(el).attr('data-service'));
         tabs.push( getSearchUrl(el, k) );
       });
 
@@ -69,14 +70,8 @@ $(document).ready(function() {
     return script.join('');
   }
   
-  var openTabs = function(urls){
-    
+  var openTabs = function(urls){  
     chrome.runtime.sendMessage({ text: "search", script: getSearchScript(urls) });
-
-    // Cannot executeScript in chrome:// tabs so must open real URL.
-    // chrome.tabs.create({ url: 'http://storyful.com?utm=multisearch', active: false }, function(tab) {
-    //   chrome.tabs.executeScript(tab.id, { runAt: 'document_start', code: script.join('') });
-    // });
   }
 
   var saveKeyword = function(el) {
