@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	mixpanel.track("MultiSearch shown");
+	// mixpanel.track("MultiSearch shown");
 		
 	$('#keyword').val(localStorage['keyword']);
 
@@ -45,7 +45,7 @@ $(document).ready(function() {
     if (k.replace(/ /g, '').length == 0) {
 			$('#keyword').focus();        	
     } else {
-    	mixpanel.track("MultiSearch requested"); //#NOTE: Only tracks that a search happened, not what the search was for.
+    	// mixpanel.track("MultiSearch requested"); //#NOTE: Only tracks that a search happened, not what the search was for.
     	
     	// To open more than 3 tabs at once in Chrome requires trickery.
     	var code_block = '';

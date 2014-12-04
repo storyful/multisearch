@@ -1,19 +1,25 @@
 {
-  "icons": { 
-    "16": "multisearch_16.png",
-    "48": "multisearch_48.png",
-    "128": "multisearch_128.png" },
-  "browser_action": {
-    "default_icon": "multisearch_19.png",
-    "default_title": "Storyful Multisearch",
-    "default_popup": "popup.html"},
   "name": "Storyful Multisearch",
-  "version": "0.9.3",
+  "version": "2.0",
   "manifest_version": 2,
-  "content_security_policy": "script-src 'self' https://cdn.mxpnl.com https://ssl.google-analytics.com; object-src 'self'",
+  "description": "Storyful Alias is a tool used to ...",
+  "homepage_url": "http://www.storyful.com",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "browser_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "Storyful Multisearch",
+    "default_popup": "src/browser_action/browser_action.html"
+  },
+  "content_security_policy": "script-src 'self' https://cdn.heapanalytics.com 'unsafe-eval'; script-src 'self' 'unsafe-eval'; object-src 'self';",
   "permissions": [
     "tabs", 
     "http://*/*/",
     "https://*/*/"
-  ]
+  ],
+  "web_accessible_resources": []
 }
