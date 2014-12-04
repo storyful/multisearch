@@ -1,8 +1,9 @@
 html, body
 {
+	background: white;
 	font-family: Helvetica, Sans-serif;
 	font-size: 12px;
-	height: 260px;
+	height: 230px;
 	margin: 0;
 	min-width: 220px;
 	padding: 5px;

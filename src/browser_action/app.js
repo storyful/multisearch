@@ -7,8 +7,6 @@ $(document).ready(function() {
   }
 
   var initialize = function(){
-    console.log('hello')
-
     // mixpanel.track("MultiSearch shown");
     $('#keyword').val(localStorage['keyword']);
 
@@ -32,8 +30,6 @@ $(document).ready(function() {
 
   var search = function(e) {
     e.preventDefault();
-
-    console.log('search');
 
     var k = $('#keyword').val(),
         tabs = [];
@@ -59,8 +55,8 @@ $(document).ready(function() {
 
     return $(el).attr('data-search-url').replace('{{k}}', encodeURIComponent(query));
   }
-  
-  var openTabs = function(urls){
+
+  var getSearchScript = function(urls){
     var script = [];
     
     // To open more than 3 tabs at once in Chrome requires trickery.
@@ -70,12 +66,17 @@ $(document).ready(function() {
         'window.open("' + urls[i] + '");');
     }
 
-    console.log(script.join(''));
+    return script.join('');
+  }
+  
+  var openTabs = function(urls){
+    
+    chrome.runtime.sendMessage({ text: "search", script: getSearchScript(urls) });
 
     // Cannot executeScript in chrome:// tabs so must open real URL.
-    chrome.tabs.create({ url: 'http://storyful.com?utm=multisearch', active: false }, function(tab) {
-      chrome.tabs.executeScript(tab.id, { runAt: 'document_start', code: script.join('') });
-    });
+    // chrome.tabs.create({ url: 'http://storyful.com?utm=multisearch', active: false }, function(tab) {
+    //   chrome.tabs.executeScript(tab.id, { runAt: 'document_start', code: script.join('') });
+    // });
   }
 
   var saveKeyword = function(el) {

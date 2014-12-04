@@ -10,10 +10,26 @@
     "128": "icons/icon128.png"
   },
   "default_locale": "en",
+  "background": {
+    "scripts": [
+      "/js/jquery/jquery.min.js",
+      "src/bg/background.js"
+    ]
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": [
+      "/js/jquery/jquery.min.js",
+      "src/content_scripts/overlay.js"
+    ],
+    "css": [
+      "/css/overlay.css"
+    ],    
+    "run_at": "document_end"
+  }],  
   "browser_action": {
     "default_icon": "icons/icon19.png",
-    "default_title": "Storyful Multisearch",
-    "default_popup": "src/browser_action/browser_action.html"
+    "default_title": "Storyful Multisearch"
   },
   "content_security_policy": "script-src 'self' https://cdn.heapanalytics.com 'unsafe-eval'; script-src 'self' 'unsafe-eval'; object-src 'self';",
   "permissions": [
@@ -21,5 +37,8 @@
     "http://*/*/",
     "https://*/*/"
   ],
-  "web_accessible_resources": []
+  "web_accessible_resources": [
+    "src/browser_action/browser_action.html",
+    "src/content_scripts/overlay_app.html"
+  ]
 }
