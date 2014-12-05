@@ -37,14 +37,13 @@ $(document).ready(function() {
     if (k.replace(/ /g, '').length == 0) {
       $('#keyword').focus();
     } else {
-      // mixpanel.track("MultiSearch requested");
-      // #NOTE: Only tracks that a search happened, not what the search was for.
       $.each($("input[type='checkbox']:checked"), function(index, el) {
         heap.track('Search ' + $(el).attr('data-service'));
         tabs.push( getSearchUrl(el, k) );
       });
 
       openTabs(tabs);
+      toggleOverlay();
     }
   }
 
@@ -72,6 +71,10 @@ $(document).ready(function() {
   
   var openTabs = function(urls){  
     chrome.runtime.sendMessage({ text: "search", script: getSearchScript(urls) });
+  }
+
+  var toggleOverlay = function(){
+    chrome.runtime.sendMessage({ text: "toggle_overlay" });
   }
 
   var saveKeyword = function(el) {
