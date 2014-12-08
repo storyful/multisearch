@@ -3,94 +3,118 @@
 	
 	<head>
 		<title>Storyful Multisearch</title>
+		
+		<link href="/css/font-awesome.min.css" rel="stylesheet">
 		<link href="/css/app.css" rel="stylesheet">
-    <script src="/js/jquery/jquery.min.js"></script>
-    <script src="app.js"></script>
-    <script src="/src/content_scripts/tracking.js"></script>
 	</head>
 	
 	<body>
-		<h1>Storyful Multisearch</h1>
-		<form>
-			<p>
-				<input type="search" id="keyword" placeholder="Search term...">
-			</p>
-			<ul>
-				<li>
-					<label>
-						<input 	type="checkbox" 
-										checked="checked" 
-										id="preset_twitter_images" 
-										data-service="Twitter Images"
-										data-search-url="https://twitter.com/#!/search/realtime/{{k}}%20AND%20(pic.twitter.com%20OR%20Lockerz%20OR%20Twitpic%20OR%20Flickr%20OR%20Yfrog%20OR%20say.ly%20OR%20ow.ly%20OR%20twitgoo%20OR%20imageshack%20OR%20photobucket%20OR%20instagram)%20-RT">
-						Twitter Images
-					</label>
-				</li>
-				<li>
-					<label>
-						<input 	type="checkbox" 
-										checked="checked" 
-										id="preset_twitter_videos" 
-										data-service="Twitter Videos"
-										data-search-url="https://twitter.com/#!/search/realtime/{{k}}%20AND%20(twitvid%20OR%20bambuser%20OR%20qik%20OR%20YouTube%20OR%20posterous.com%20OR%20vine.co%20OR%20Vimeo%20OR%20dailymotion)%20-RT">
-						Twitter Videos
-					</label>
-				</li>
-				<li>
-					<label>
-						<input 	type="checkbox" 
-										checked="checked" 
-										data-service="Twitter"
-										id="preset_twitter" data-search-url="https://twitter.com/#!/search/realtime/{{k}}%20-RT">
-						Twitter
-					</label>
-				</li>
-				<li>
-					<label>
-						<input 	type="checkbox" 
-										checked="checked" 
-										id="preset_youtube" 
-										data-service="YouTube"
-										data-search-url="http://www.youtube.com/results?search_type=videos&search_query={{k}}&search_sort=video_date_uploaded&uni=3">
-						YouTube
-					</label>
-				</li>
-				<li>
-					<label>
-						<input 	type="checkbox" 
-										checked="checked" 
-										id="preset_tumblr" 
-										data-service="Tumblr"
-										data-search-url="http://www.tumblr.com/tagged/{{k}}"
-										data-search-modifier="\s|'">
-						Tumblr
-					</label>
-				</li>
-				<li>
-					<label>
-						<input 	type="checkbox" 
-										checked="checked" 
-										id="preset_instagram" 
-										data-service="Instagram"
-										data-search-url="http://web.stagram.com/tag/{{k}}/"
-										data-search-modifier="\s|'">
-						Instagram
-					</label>
-				</li>
-				<li>
-					<label>
-						<input 	type="checkbox" 
-										checked="checked" 
-										id="preset_spokeo" 
-										data-service="Spokeo"
-										data-search-url="http://www.spokeo.com/search?q={{k}}">
-						Spokeo
-					</label>
-				</li>
-			</ul>
-			<p>
-				<input id="btn-search" type="submit" value="Search">
-			</p>
-		</form>
+		<div class="container">
+
+			<h1>Storyful Multisearch</h1>
+			<form>
+				
+				<div id="search">
+					<input type="search" id="keyword" placeholder="Search term...">
+					
+					<button id="btn-search">
+						<i class="fa fa-search"></i> <span>Search</span>
+					</button>
+				</div>
+
+				<ul class="row">
+					<li>
+						<label>
+							<input 	type="checkbox" 
+											checked="checked" 
+											id="preset_twitter_images" 
+											data-service="Twitter Images"
+											data-search-url="https://twitter.com/#!/search/realtime/{{k}}%20AND%20(pic.twitter.com%20OR%20Lockerz%20OR%20Twitpic%20OR%20Flickr%20OR%20Yfrog%20OR%20say.ly%20OR%20ow.ly%20OR%20twitgoo%20OR%20imageshack%20OR%20photobucket%20OR%20instagram)%20-RT">
+							
+							<i class="fa fa-check"></i>
+							Twitter Images
+						</label>
+					</li>
+					<li>
+						<label>
+							<input 	type="checkbox" 
+											checked="checked" 
+											id="preset_twitter_videos" 
+											data-service="Twitter Videos"
+											data-search-url="https://twitter.com/#!/search/realtime/{{k}}%20AND%20(twitvid%20OR%20bambuser%20OR%20qik%20OR%20YouTube%20OR%20posterous.com%20OR%20vine.co%20OR%20Vimeo%20OR%20dailymotion)%20-RT">
+							<i class="fa fa-check"></i>
+							Twitter Videos
+						</label>
+					</li>
+					<li>
+						<label>
+							<input 	type="checkbox" 
+											checked="checked" 
+											data-service="Twitter"
+											id="preset_twitter" data-search-url="https://twitter.com/#!/search/realtime/{{k}}%20-RT">
+							
+							<i class="fa fa-check"></i>
+							Twitter
+						</label>
+					</li>
+					<li>
+						<label>
+							<input 	type="checkbox" 
+											checked="checked" 
+											id="preset_youtube" 
+											data-service="YouTube"
+											data-search-url="http://www.youtube.com/results?search_type=videos&search_query={{k}}&search_sort=video_date_uploaded&uni=3">
+							
+							<i class="fa fa-check"></i>
+							YouTube
+						</label>
+					</li>
+					<li>
+						<label>
+							<input 	type="checkbox" 
+											checked="checked" 
+											id="preset_tumblr" 
+											data-service="Tumblr"
+											data-search-url="http://www.tumblr.com/tagged/{{k}}"
+											data-search-modifier="\s|'">
+							
+							<i class="fa fa-check"></i>
+							Tumblr
+						</label>
+					</li>
+					<li>
+						<label>
+							<input 	type="checkbox" 
+											checked="checked" 
+											id="preset_instagram" 
+											data-service="Instagram"
+											data-search-url="http://web.stagram.com/tag/{{k}}/"
+											data-search-modifier="\s|'">
+							
+							<i class="fa fa-check"></i>
+							Instagram
+						</label>
+					</li>
+					<li>
+						<label>
+							<input 	type="checkbox" 
+											checked="checked" 
+											id="preset_spokeo" 
+											data-service="Spokeo"
+											data-search-url="http://www.spokeo.com/search?q={{k}}">
+
+							<i class="fa fa-check"></i>
+							Spokeo
+						</label>
+					</li>
+				</ul>
+			</form>
+		</div>
+
+		<div class="toggle-options">Toggle Options</div>
+
+ 		<script src="/js/jquery/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <script src="/src/content_scripts/tracking.js"></script>		
 	</body>
 </html>

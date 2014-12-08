@@ -7,8 +7,17 @@ function loadOverlay(){
 }
 
 chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
+
   if (msg.text && (msg.text == "toggle_overlay")) {
     if($('#crx-sf-multisearch').length === 0) loadOverlay();
-    $('#crx-sf-multisearch-inner').toggle();
+    $('#crx-sf-multisearch-inner').fadeToggle();
   }
+
+  if (msg.text && (msg.text == "resize")) {
+    var $iframe = $('#crx-sf-multisearch-inner iframe');
+    $('#crx-sf-multisearch-inner').animate({
+      'height': msg.height + 'px'
+    }, 200);
+  }
+
 });

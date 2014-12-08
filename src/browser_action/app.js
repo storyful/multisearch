@@ -2,8 +2,16 @@ $(document).ready(function() {
 
   var bindEvents = function(){
     $("input[type='checkbox']").change(saveSearchOptions);
+    $("input[type='checkbox']").change(toggleSearchOption);
     $('#keyword').change(saveKeyword);
-    $('form').submit(search);    
+    
+    $('.toggle-options').click(toggleOptions);
+
+    $('form').submit(search);
+    
+    $(document).keydown(function(e){
+      if(e.keyCode == 27) toggleOverlay();
+    });    
   }
 
   var initialize = function(){
@@ -24,8 +32,11 @@ $(document).ready(function() {
         $(ele).removeAttr('checked');
       } else {
         $(ele).attr('checked', 'checked');
+        $(ele).closest('label').addClass('active');
       }
     });
+
+    $('#keyword').focus();
   }  
 
   var search = function(e) {
@@ -81,9 +92,26 @@ $(document).ready(function() {
     localStorage['keyword'] = $(el).val();
   }
 
+  var toggleOptions = function(){
+    var expanded = $("ul").hasClass('expanded'),
+        $options = $("ul label").not(".active").closest('li');
+
+    $.when( $options.fadeToggle(expanded) ).done(function(){
+      chrome.runtime.sendMessage({ text: "resize", height: $('.container').outerHeight() });
+      $("ul").toggleClass('expanded');
+    });
+  }
+
+  var toggleSearchOption = function(e){
+    var checked = $(e.target).is(':checked');
+    $(e.target).closest('label').toggleClass( 'active', checked );
+  }
+
   var saveSearchOptions = function(e) {
     $.each($("input[type='checkbox']"), function(index, ele) {
-      if ($(ele).is(':checked'))  {
+      var checked = $(ele).is(':checked');
+      
+      if ( checked )  {
         localStorage[$(ele).attr('id')] = 'true';
       } else {
         localStorage[$(ele).attr('id')] = 'false';
@@ -92,7 +120,7 @@ $(document).ready(function() {
   }
 
   bindEvents();
-  
+
   initialize();
 
 });

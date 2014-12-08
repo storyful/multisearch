@@ -1,52 +1,165 @@
-html, body
-{
-	background: white;
+* {
+	box-sizing: border-box;	
+}
+
+html, body {
+	background: #222222;
 	font-family: Helvetica, Sans-serif;
-	font-size: 12px;
-	height: 230px;
+	font-size: 14px;
 	margin: 0;
 	min-width: 220px;
-	padding: 5px;
+	color: #f5f5f5;
+	
+	/*height: 230px;*/
 }
 
-h1, h2
-{
+h1, h2 {
 	margin: 0;
 	padding: 0;
 }
 
-h1
-{
-	font-size: 18px;
+h1 {
+	display: none;
 }
 
-h2
-{
-	font-size: 14px;
-}
-
-ul
-{
+ul {
 	list-style-type: none;
 	margin: 0;
-	padding: 0;
+	padding: 20px 0px 0px;
 }
 
-#keyword
-{
-	display: block;
-	width: 100%
+.container {
+	padding: 10px 10px 30px;
 }
 
-input[type='submit']
-{
+form {
+	margin: 0px;
+	padding: 0px;
+}
+
+#search {
+	padding: 0px 0px 0px;
+	position: relative;
+}
+
+#keyword {
+	box-sizing: border-box;
+	border: none;
+	background: #656565;
+	padding: 8px;
+	color: white;
+	width: 100%;
+	font-size: 16px;
+	outline: none;
+
+	-webkit-transition: all 0.30s ease-in-out;
+	transition: all 0.30s ease-in-out;
+}
+
+#keyword:focus {
+	background: #444;
+}
+
+#btn-search {
+	background: #A3A3A3;
+	border: none;
+	color: white;
+	
+	position: absolute;
+	right: 0px;
+	top: 0px;	
+	height: 100%;
+	font-size: 18px;
+	padding: 0px 10px;
+	cursor: pointer;
+}
+
+#btn-search span {
+	display: none;
+}
+
+li {
+	float: left;
+	width: 50%;
+	margin-bottom: 10px;	
+	padding: 0px 4px 0px 8px;	
+}
+
+label {
+	background: #4E4E4E;
+	padding: 5px 0px  5px 8px;
+	color: white;
+	display: inline-block;
+	border-radius: 8px;
+
+	margin-left: 5%;
+	width: 95%;	
+
+	cursor: pointer;
+
+	transition: color 1s;
+}
+
+label .fa {
+	display: none;
+}
+
+label:hover {
+	background: #424242;
+}
+
+label input {
+	display: none;
+}
+
+/* active */
+
+label.active {
+	background: #74A62E;
+	margin-left: 0%;
+	width: 100%;	
+}
+
+label.active:hover {
+	background: #699926;
+}
+
+label.active .fa{
+	display: inline;
+}
+
+/* submit */
+
+input[type='submit'] {
 	display: block;
 	width: 100%;
 }
 
-.error
-{
+.error {
 	color: #c33;
 	visibility: hidden;
 	padding-bottom: 10px;
+}
+
+/* row */
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* toggle-options */
+
+.toggle-options {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	overflow: hidden;
+	text-indent: -99999px;
+	background: #444;
+	height: 20px;
+
+	cursor: pointer;
 }
