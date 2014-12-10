@@ -4,23 +4,28 @@ $(document).ready(function() {
     $("input[type='checkbox']").change(saveSearchOptions);
     $("input[type='checkbox']").change(toggleSearchOption);
     $('#keyword').change(saveKeyword);
-    
-    $('.toggle-options').click(toggleOptions);
-
+    $('.toggle-options').click(expandOptions);
     $('form').submit(search);
     
     $(document).keydown(function(e){
       if(e.keyCode == 27) toggleOverlay();
     });    
-  }
+  };
 
   var initialize = function(){
+    updateOptions();
+    // resizeOverlay();
+
+    $('#keyword').focus();
+  };
+
+  var updateOptions = function(){
     // mixpanel.track("MultiSearch shown");
-    $('#keyword').val(localStorage['keyword']);
+    $('#keyword').val(localStorage.keyword);
 
     // Remember checkbox choices between sessions
     $.each($("input[type='checkbox']"), function(index, ele) {
-      if (localStorage[$(ele).attr('id')] == undefined) {
+      if (localStorage[$(ele).attr('id')] === undefined) {
         if ($(ele).is(':checked')) {
           localStorage[$(ele).attr('id')] = 'true';
         } else {
@@ -30,14 +35,13 @@ $(document).ready(function() {
 
       if (localStorage[$(ele).attr('id')] == 'false') {
         $(ele).removeAttr('checked');
+        // $(ele).closest('li').hide();
       } else {
         $(ele).attr('checked', 'checked');
         $(ele).closest('label').addClass('active');
       }
-    });
-
-    $('#keyword').focus();
-  }  
+    });    
+  };
 
   var search = function(e) {
     e.preventDefault();
@@ -45,7 +49,7 @@ $(document).ready(function() {
     var k = $('#keyword').val(),
         tabs = [];
 
-    if (k.replace(/ /g, '').length == 0) {
+    if (k.replace(/ /g, '').length === 0) {
       $('#keyword').focus();
     } else {
       $.each($("input[type='checkbox']:checked"), function(index, el) {
@@ -56,7 +60,7 @@ $(document).ready(function() {
       openTabs(tabs);
       toggleOverlay();
     }
-  }
+  };
 
   var getSearchUrl = function(el, query){
     if ($(el).attr('data-search-modifier') != 'undefined') {
@@ -65,47 +69,54 @@ $(document).ready(function() {
     }
 
     return $(el).attr('data-search-url').replace('{{k}}', encodeURIComponent(query));
-  }
+  };
 
   var getSearchScript = function(urls){
     var script = [];
     
     // To open more than 3 tabs at once in Chrome requires trickery.
     for(i = 0; i < urls.length; i++){
-      script.push((i == 0) ?
+      script.push((i === 0) ?
         'document.location = "' + urls[i] + '"; ' :
         'window.open("' + urls[i] + '");');
     }
 
     return script.join('');
-  }
+  };
   
   var openTabs = function(urls){  
     chrome.runtime.sendMessage({ text: "search", script: getSearchScript(urls) });
-  }
+  };
 
   var toggleOverlay = function(){
     chrome.runtime.sendMessage({ text: "toggle_overlay" });
-  }
+  };
 
   var saveKeyword = function(el) {
-    localStorage['keyword'] = $(el).val();
-  }
+    localStorage.keyword = $(el).val();
+  };
 
-  var toggleOptions = function(){
+  var expandOptions = function(){
     var expanded = $("ul").hasClass('expanded'),
         $options = $("ul label").not(".active").closest('li');
 
+    if(expanded) return;
+    $('.toggle-options').hide();
+
     $.when( $options.fadeToggle(expanded) ).done(function(){
-      chrome.runtime.sendMessage({ text: "resize", height: $('.container').outerHeight() });
+      resizeOverlay();
       $("ul").toggleClass('expanded');
     });
-  }
+  };
+
+  var resizeOverlay = function(){
+    chrome.runtime.sendMessage({ text: "resize", height: $('.container').outerHeight() });
+  };
 
   var toggleSearchOption = function(e){
     var checked = $(e.target).is(':checked');
     $(e.target).closest('label').toggleClass( 'active', checked );
-  }
+  };
 
   var saveSearchOptions = function(e) {
     $.each($("input[type='checkbox']"), function(index, ele) {
@@ -117,7 +128,7 @@ $(document).ready(function() {
         localStorage[$(ele).attr('id')] = 'false';
       }
     });
-  }
+  };
 
   bindEvents();
 
