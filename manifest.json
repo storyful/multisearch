@@ -1,6 +1,6 @@
 {
   "name": "Storyful Multisearch",
-  "version": "2.0",
+  "version": "2.0.1",
   "manifest_version": 2,
   "description": "Storyful Alias is a tool used to ...",
   "homepage_url": "http://www.storyful.com",
@@ -24,16 +24,16 @@
     ],
     "css": [
       "/css/overlay.css"
-    ],    
+    ],
     "run_at": "document_end"
-  }],  
+  }],
   "browser_action": {
     "default_icon": "icons/icon19.png",
     "default_title": "Storyful Multisearch"
   },
   "content_security_policy": "script-src 'self' https://cdn.heapanalytics.com 'unsafe-eval'; script-src 'self' 'unsafe-eval'; object-src 'self';",
   "permissions": [
-    "tabs", 
+    "tabs",
     "https://cdn.heapanalytics.com/",
     "http://*/*/",
     "https://*/*/"

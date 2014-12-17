@@ -9,7 +9,7 @@
 
 
 * {
-	box-sizing: border-box;	
+	box-sizing: border-box;
 }
 
 html, body {
@@ -20,7 +20,7 @@ html, body {
 	min-width: 220px;
 	color: #f5f5f5;
 	letter-spacing: 0.06em;
-	
+
 	/*height: 230px;*/
 }
 
@@ -30,7 +30,11 @@ h1, h2 {
 }
 
 h1 {
-	display: none;
+	overflow: hidden;
+	background: #fa7300;
+	height: 20px;
+	padding: 3px 5px;
+	text-align: right;
 }
 
 ul {
@@ -40,7 +44,7 @@ ul {
 }
 
 .container {
-	padding: 15px 0px 25px;
+	padding: 0px 0px 25px;
 }
 
 form {
@@ -81,10 +85,10 @@ form {
 	background: #C1C1C1;
 	border: none;
 	color: white;
-	
+
 	position: absolute;
 	right: 0px;
-	top: 0px;	
+	top: 0px;
 	height: 100%;
 	font-size: 16px;
 	text-align: center;
@@ -99,8 +103,8 @@ form {
 li {
 	float: left;
 	width: 50%;
-	margin-bottom: 5px;	
-	padding: 0px 4px 0px 0px;	
+	margin-bottom: 5px;
+	padding: 0px 4px 0px 0px;
 }
 
 label {
@@ -141,7 +145,7 @@ label.active {
 	/*background: #74A62E;*/
 	/*margin-left: 0%;*/
 	/*width: 100%;	*/
-	color: #74A62E;	
+	color: #74A62E;
 }
 
 label:hover span {
