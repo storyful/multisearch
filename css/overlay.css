@@ -1,14 +1,14 @@
 #crx-sf-multisearch-inner {
   box-sizing: border-box;
   position: fixed;
-  padding: 0px;  
+  padding: 0px;
   right: 0px;
   top: 0px;
   z-index: 2999999999;
 
   width: 296px;
-  height: 190px;
-  
+  height: 150px;
+
   /*background: rgba(30, 30, 30, 0.98);*/
   box-shadow: 0px 0px 4.35px 0.65px rgba(0, 0, 0, 0.68);
 

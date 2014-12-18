@@ -7,9 +7,13 @@
   font-style: normal;
 }
 
-
 * {
 	box-sizing: border-box;
+}
+
+form {
+	margin: 0px;
+	padding: 0px;
 }
 
 html, body {
@@ -45,11 +49,6 @@ ul {
 
 .container {
 	padding: 0px 0px 25px;
-}
-
-form {
-	margin: 0px;
-	padding: 0px;
 }
 
 #search {
@@ -98,6 +97,14 @@ form {
 
 #btn-search span {
 	display: none;
+}
+
+#options-form {
+	display: none;
+}
+
+#options-selected {
+	padding: 15px;
 }
 
 li {
@@ -181,7 +188,6 @@ input[type='submit'] {
 /* toggle-options */
 
 .toggle-options {
-	display: none;
 	position: fixed;
 	bottom: 0px;
 	left: 0px;

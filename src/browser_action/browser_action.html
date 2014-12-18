@@ -11,11 +11,9 @@
 	<body>
 		<div class="container">
 
-			<h1>
-				<img src="/images/storyful.png" alt="Storyful Multisearch"></h1>
+			<h1><img src="/images/storyful.png" alt="Storyful Multisearch"></h1>
 
 			<form>
-
 				<div id="search">
 					<input type="search" id="keyword" placeholder="Search term...">
 
@@ -24,7 +22,12 @@
 					</button>
 				</div>
 
-				<ul class="row">
+				<div id="options-selected">
+					<div class="has-options">Searching <span></span></span>.</div>
+					<div class="no-options">Click here to select the services you want to search.</div>
+				</div>
+
+				<ul id="options-form" class="row">
 					<li>
 						<label>
 							<input 	type="checkbox"

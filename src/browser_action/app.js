@@ -3,20 +3,44 @@ $(document).ready(function() {
   var bindEvents = function(){
     $("input[type='checkbox']").change(saveSearchOptions);
     $("input[type='checkbox']").change(toggleSearchOption);
+    $("input[type='checkbox']").change(renderSelectedOptions);
+    $("#options-selected").click(toggleSearchForm);
+    $('.toggle-options').click(toggleSearchForm);
     $('#keyword').change(saveKeyword);
-    $('.toggle-options').click(expandOptions);
     $('form').submit(search);
-    
+
     $(document).keydown(function(e){
       if(e.keyCode == 27) toggleOverlay();
-    });    
+    });
   };
 
   var initialize = function(){
     updateOptions();
-    // resizeOverlay();
+    renderSelectedOptions();
 
     $('#keyword').focus();
+  };
+
+  var renderSelectedOptions = function(){
+    var selected = [];
+
+    $.each(localStorage, function(option, value){
+      if(value === "true") {
+        selected.push( $('#'+option).attr('data-service') );
+      }
+    });
+
+    var output = (selected.length > 1) ?
+      selected.slice(0, -1).join(", ") + " and " + selected[selected.length-1] :
+      selected.join();
+
+    $('#options-selected span').html( output );
+
+    console.log();
+    console.log(  );
+
+    $('#options-selected .has-options').toggle( selected.length > 0 );
+    $('#options-selected .no-options').toggle( selected.length === 0 );
   };
 
   var updateOptions = function(){
@@ -40,7 +64,7 @@ $(document).ready(function() {
         $(ele).attr('checked', 'checked');
         $(ele).closest('label').addClass('active');
       }
-    });    
+    });
   };
 
   var search = function(e) {
@@ -73,7 +97,7 @@ $(document).ready(function() {
 
   var getSearchScript = function(urls){
     var script = [];
-    
+
     // To open more than 3 tabs at once in Chrome requires trickery.
     for(i = 0; i < urls.length; i++){
       script.push((i === 0) ?
@@ -83,8 +107,8 @@ $(document).ready(function() {
 
     return script.join('');
   };
-  
-  var openTabs = function(urls){  
+
+  var openTabs = function(urls){
     chrome.runtime.sendMessage({ text: "search", script: getSearchScript(urls) });
   };
 
@@ -92,8 +116,8 @@ $(document).ready(function() {
     chrome.runtime.sendMessage({ text: "toggle_overlay" });
   };
 
-  var saveKeyword = function(el) {
-    localStorage.keyword = $(el).val();
+  var saveKeyword = function(e) {
+    localStorage.keyword = $(e.target).val();
   };
 
   var expandOptions = function(){
@@ -113,6 +137,15 @@ $(document).ready(function() {
     chrome.runtime.sendMessage({ text: "resize", height: $('.container').outerHeight() });
   };
 
+  var toggleSearchForm = function(e){
+    $('#options-selected').fadeOut(300, function(){
+      $('#options-form').fadeIn(300, function(){
+        resizeOverlay();
+        $('.toggle-options').fadeOut();
+      });
+    });
+  };
+
   var toggleSearchOption = function(e){
     var checked = $(e.target).is(':checked');
     $(e.target).closest('label').toggleClass( 'active', checked );
@@ -121,7 +154,7 @@ $(document).ready(function() {
   var saveSearchOptions = function(e) {
     $.each($("input[type='checkbox']"), function(index, ele) {
       var checked = $(ele).is(':checked');
-      
+
       if ( checked )  {
         localStorage[$(ele).attr('id')] = 'true';
       } else {
