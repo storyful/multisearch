@@ -51,6 +51,10 @@ ul {
 	padding: 0px 0px 25px;
 }
 
+body:hover .toggle-options {
+	opacity: 1;
+}
+
 #search {
 	padding: 0px 0px 0px;
 	position: relative;
@@ -187,7 +191,20 @@ input[type='submit'] {
 
 /* toggle-options */
 
+.has-options span {
+	color: #74A62E;
+}
+
+#options-selected {
+	cursor: pointer;
+	min-height: 51px;
+}
+
 .toggle-options {
+	opacity: 0;
+
+	transition: all .5s;
+
 	position: fixed;
 	bottom: 0px;
 	left: 0px;
