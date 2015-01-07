@@ -21,8 +21,7 @@ chrome://extensions
 
 We welcome your improvements. Fork the repo on Github and send a pull request with your changes.
 
-1. Either supply a Google Analytics UA ID in ga.js or remove ga.js requirement in popup.html.
-2. Either supply a Mixpanel key in mixpanel.js or remove mixpanel.js requirement in popup.html.
+1. Either supply a Heap key in tracking.js or remove tracking.js requirement browser_action.html.
 
 ## Features & Issues
 
