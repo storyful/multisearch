@@ -38,6 +38,7 @@
     "https://*/*/"
   ],
   "web_accessible_resources": [
-    "src/*"
+    "src/*",
+    "bower_components/*"
   ]
 }
