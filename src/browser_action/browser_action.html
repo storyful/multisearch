@@ -28,13 +28,24 @@
 				</div>
 
 				<ul id="options-form" class="row">
+				  <li>
+						<label>
+							<input 	type="checkbox"
+											checked="checked"
+											data-service="Twitter"
+											id="preset_twitter" data-search-url="https://twitter.com/search?q={{k}}%20include%3Aretweets&src=typd&vertical=default&f=tweets">
+
+							<i class="fa fa-check"></i>
+							<span>Twitter</span>
+						</label>
+					</li>
 					<li>
 						<label>
 							<input 	type="checkbox"
 											checked="checked"
 											id="preset_twitter_images"
 											data-service="Twitter Images"
-											data-search-url="https://twitter.com/#!/search/realtime/{{k}}%20AND%20(pic.twitter.com%20OR%20Lockerz%20OR%20Twitpic%20OR%20Flickr%20OR%20Yfrog%20OR%20say.ly%20OR%20ow.ly%20OR%20twitgoo%20OR%20imageshack%20OR%20photobucket%20OR%20instagram)%20-RT">
+											data-search-url="https://twitter.com/#!/search?q={{k}}%20AND%20%28pic.twitter.com%20OR%20Lockerz%20OR%20Twitpic%20OR%20Flickr%20OR%20Yfrog%20OR%20say.ly%20OR%20ow.ly%20OR%20twitgoo%20OR%20imageshack%20OR%20photobucket%20OR%20instagram%29%20-RT&src=typd&vertical=default&f=tweets">
 
 							<i class="fa fa-check"></i>
 							<span>Twitter Images</span>
@@ -46,7 +57,7 @@
 											checked="checked"
 											id="preset_twitter_videos"
 											data-service="Twitter Videos"
-											data-search-url="https://twitter.com/#!/search/realtime/{{k}}%20AND%20(twitvid%20OR%20bambuser%20OR%20qik%20OR%20YouTube%20OR%20posterous.com%20OR%20vine.co%20OR%20Vimeo%20OR%20dailymotion)%20-RT">
+											data-search-url="https://twitter.com/#!/search?q={{k}}%20AND%20(twitvid%20OR%20bambuser%20OR%20qik%20OR%20YouTube%20OR%20posterous.com%20OR%20vine.co%20OR%20Vimeo%20OR%20dailymotion)%20-RT&vertical=default&f=tweets">
 							<i class="fa fa-check"></i>
 							<span>Twitter Videos</span>
 						</label>
@@ -55,11 +66,12 @@
 						<label>
 							<input 	type="checkbox"
 											checked="checked"
-											data-service="Twitter"
-											id="preset_twitter" data-search-url="https://twitter.com/#!/search/realtime/{{k}}%20-RT">
+											id="preset_vine"
+											data-service="Vine"
+											data-search-url="https://vine.co/search/{{k}}">
 
 							<i class="fa fa-check"></i>
-							<span>Twitter</span>
+							<span>Vine</span>
 						</label>
 					</li>
 					<li>
@@ -93,7 +105,7 @@
 											checked="checked"
 											id="preset_instagram"
 											data-service="Instagram"
-											data-search-url="http://web.stagram.com/tag/{{k}}/"
+											data-search-url="http://www.gramfeed.com/instagram/tags#{{k}}/"
 											data-search-modifier="\s|'">
 
 							<i class="fa fa-check"></i>

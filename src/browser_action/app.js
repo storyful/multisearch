@@ -91,9 +91,11 @@ $(document).ready(function() {
       var modifier = new RegExp($(el).attr('data-search-modifier'), 'g');
       query = query.replace(modifier, '');
     }
-
+    console.log('hello');
     return $(el).attr('data-search-url').replace('{{k}}', encodeURIComponent(query));
   };
+  
+  
 
   var getSearchScript = function(urls){
     var script = [];
