@@ -44,7 +44,7 @@ $(document).ready(function() {
   };
 
   var updateOptions = function(){
-    // mixpanel.track("MultiSearch shown");
+    // track("MultiSearch shown");
     $('#keyword').val(localStorage.keyword);
 
     // Remember checkbox choices between sessions
@@ -77,7 +77,7 @@ $(document).ready(function() {
       $('#keyword').focus();
     } else {
       $.each($("input[type='checkbox']:checked"), function(index, el) {
-        heap.track('Search ' + $(el).attr('data-service'));
+        // track('Search ' + $(el).attr('data-service'));
         tabs.push( getSearchUrl(el, k) );
       });
 

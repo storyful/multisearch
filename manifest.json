@@ -30,10 +30,10 @@
     "default_icon": "icons/icon19.png",
     "default_title": "Storyful Multisearch"
   },
-  "content_security_policy": "script-src 'self' https://cdn.heapanalytics.com 'unsafe-eval'; script-src 'self' 'unsafe-eval'; object-src 'self';",
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com 'unsafe-eval'; script-src 'self' 'unsafe-eval'; object-src 'self';",
   "permissions": [
     "tabs",
-    "https://cdn.heapanalytics.com/",
+    "https://ssl.google-analytics.com",
     "http://*/*/",
     "https://*/*/"
   ],
