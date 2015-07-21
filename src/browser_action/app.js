@@ -36,9 +36,6 @@ $(document).ready(function() {
 
     $('#options-selected span').html( output );
 
-    console.log();
-    console.log(  );
-
     $('#options-selected .has-options').toggle( selected.length > 0 );
     $('#options-selected .no-options').toggle( selected.length === 0 );
   };
