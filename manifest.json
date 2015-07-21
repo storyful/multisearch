@@ -33,7 +33,7 @@
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com 'unsafe-eval'; script-src 'self' 'unsafe-eval'; object-src 'self';",
   "permissions": [
     "tabs",
-    "https://ssl.google-analytics.com",
+    "https://ssl.google-analytics.com/",
     "http://*/*/",
     "https://*/*/"
   ],
