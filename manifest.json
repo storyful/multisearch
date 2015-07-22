@@ -1,6 +1,6 @@
 {
   "name": "Storyful Multisearch",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "manifest_version": 2,
   "homepage_url": "http://www.storyful.com",
   "icons": {
@@ -30,7 +30,7 @@
     "default_icon": "icons/icon19.png",
     "default_title": "Storyful Multisearch"
   },
-  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com 'unsafe-eval'; script-src 'self' 'unsafe-eval'; object-src 'self';",
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com 'unsafe-eval'; object-src 'self';",
   "permissions": [
     "tabs",
     "https://ssl.google-analytics.com/",
