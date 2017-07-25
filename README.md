@@ -33,7 +33,7 @@ to a tag for Instagram and Tumblr. "america's cup" becomes "americascup".
 
 ## Contact
 
-Contact Paul Watson <paul.watson@storyful.com> (CTO @Storyful) with any questions, suggestions or problems.
+Contact Tony Byrne <tony.byrne@storyful.com> (CTO @Storyful) with any questions, suggestions or problems.
 
 ## License
 
